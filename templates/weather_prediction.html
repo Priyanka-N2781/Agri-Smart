@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}Weather & Rainfall Forecast – AgriSmart{% endblock %}
+{% block content %}
+<div class="page-header" style="--page-color:#06b6d4">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-aos="fade-right">
+        <span class="section-badge">Module 4</span>
+        <h1 class="page-title"><i class="bi bi-cloud-rain-fill me-3"></i>Weather &amp; Rainfall Forecast</h1>
+        <p class="page-sub">Enter a target year to receive a rainfall prediction and agricultural advisory based on historical weather patterns.</p>
+      </div>
+      <div class="col-lg-4 d-none d-lg-flex justify-content-end" data-aos="fade-left">
+        <div class="page-header-icon" style="color:#06b6d4"><i class="bi bi-cloud-rain-fill"></i></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="row g-5 justify-content-center">
+
+    <!-- Form -->
+    <div class="col-lg-4" data-aos="fade-right">
+      <div class="module-card">
+        <h4 class="module-card-title"><i class="bi bi-calendar3 me-2"></i>Target Year</h4>
+        <form method="POST" action="{{ url_for('main.weather_prediction') }}">
+          <div class="mb-4">
+            <label class="form-label ag-label" for="target_year">Forecast Year</label>
+            <input type="number" class="form-control ag-input" id="target_year" name="target_year"
+                   min="1980" max="2100" step="1"
+                   value="{{ target_year or 2025 }}" required/>
+            <div class="form-text text-muted">Enter any year between 1980 and 2100.</div>
+          </div>
+          {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+          <button type="submit" class="btn btn-ag-primary w-100 btn-lg" style="--btn-color:#06b6d4">
+            <i class="bi bi-cloud-rain me-2"></i>Forecast Rainfall
+          </button>
+        </form>
+      </div>
+
+      {% if result %}
+      <div class="result-card mt-4">
+        <div class="result-header" style="--res-color:#06b6d4">
+          <i class="bi bi-cloud-fill me-2"></i>{{ result.target_year }} Forecast
+        </div>
+        <div class="result-body text-center py-3">
+          <div class="weather-value">{{ result.predicted_rainfall }}</div>
+          <div class="weather-unit">mm / year</div>
+          {% set r = result.predicted_rainfall %}
+          <div class="mt-3">
+            {% if r < 600 %}
+              <span class="badge bg-danger fs-6"><i class="bi bi-exclamation-triangle me-1"></i>Severe Drought Risk</span>
+            {% elif r < 800 %}
+              <span class="badge bg-warning text-dark fs-6"><i class="bi bi-cloud me-1"></i>Below Average</span>
+            {% elif r < 1000 %}
+              <span class="badge bg-success fs-6"><i class="bi bi-check-circle me-1"></i>Near Normal</span>
+            {% else %}
+              <span class="badge bg-info text-dark fs-6"><i class="bi bi-cloud-rain me-1"></i>Above Average</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="notes-box mt-4">
+        <h6><i class="bi bi-lightbulb-fill me-2 text-warning"></i>Agricultural Advisory</h6>
+        <ul class="notes-list mb-0">
+          {% for tip in result.advisory %}<li>{{ tip }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Chart -->
+    <div class="col-lg-8" data-aos="fade-left">
+      <div class="module-card h-100">
+        <h4 class="module-card-title"><i class="bi bi-bar-chart-line me-2"></i>Historical Rainfall Trend (1990–2024)</h4>
+        <canvas id="weatherChart" height="320"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+const histYears  = {{ hist_years | tojson }};
+const histValues = {{ hist_values | tojson }};
+{% if result %}
+const predYear  = {{ result.target_year }};
+const predValue = {{ result.predicted_rainfall }};
+{% else %}
+const predYear = null; const predValue = null;
+{% endif %}
+
+const labels = [...histYears];
+const data   = [...histValues];
+if (predYear && !histYears.includes(predYear)) {
+  labels.push(predYear); data.push(predValue);
+}
+
+const ctx3 = document.getElementById("weatherChart").getContext("2d");
+new Chart(ctx3, {
+  type: "line",
+  data: {
+    labels,
+    datasets: [
+      {
+        label: "Historical Rainfall (mm)",
+        data: histValues.concat(predYear && !histYears.includes(predYear) ? [null] : []),
+        borderColor: "#06b6d4", backgroundColor: "rgba(6,182,212,0.12)",
+        fill: true, tension: 0.35, pointRadius: 3, borderWidth: 2,
+      },
+      predYear && !histYears.includes(predYear) ? {
+        label: "Predicted (" + predYear + ")",
+        data: histValues.map((_,i) => i === histValues.length-1 ? histValues[histValues.length-1] : null).concat([predValue]),
+        borderColor: "#f59e0b", backgroundColor: "rgba(245,158,11,0.15)",
+        borderDash: [6,4], fill: false, tension: 0, pointRadius: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8],
+        pointBackgroundColor: "#f59e0b", borderWidth: 2,
+      } : null
+    ].filter(Boolean)
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { labels: { color: "#ccc", padding: 16 } },
+      tooltip: { backgroundColor: "rgba(10,20,15,0.9)" }
+    },
+    scales: {
+      x: { ticks: { color: "#aaa", maxTicksLimit: 12 }, grid: { color: "rgba(255,255,255,0.04)" } },
+      y: { ticks: { color: "#aaa" }, grid: { color: "rgba(255,255,255,0.06)" }, title: { display: true, text: "Rainfall (mm)", color: "#aaa" } }
+    }
+  }
+});
+</script>
+{% endblock %}

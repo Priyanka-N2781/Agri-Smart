@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}About – AgriSmart{% endblock %}
+{% block content %}
+<div class="page-header" style="--page-color:#22c55e">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-12 text-center" data-aos="fade-up">
+        <span class="section-badge">About the Project</span>
+        <h1 class="page-title">AgriSmart</h1>
+        <p class="page-sub">AI-Powered Crop Yield Prediction and Agricultural Advisory System</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container py-5">
+
+  <!-- Overview -->
+  <div class="row g-5 align-items-center mb-5">
+    <div class="col-lg-6" data-aos="fade-right">
+      <span class="section-badge">Project Overview</span>
+      <h2 class="section-title">What is AgriSmart?</h2>
+      <p class="text-muted">
+        AgriSmart is a comprehensive, AI-driven agricultural advisory web application that empowers farmers,
+        agri-researchers, and agricultural students with smart, data-backed insights. It combines machine learning,
+        deep learning, and real-time data analysis into a single, seamless platform.
+      </p>
+      <p class="text-muted">
+        From predicting how much crop a field will yield based on environmental conditions, to scanning a leaf
+        photo and identifying which of 33 different diseases might be affecting it — AgriSmart covers the full
+        spectrum of modern precision agriculture.
+      </p>
+      <div class="d-flex flex-wrap gap-3 mt-4">
+        <a href="{{ url_for('main.yield_prediction') }}" class="btn btn-ag-primary">
+          <i class="bi bi-play-circle me-2"></i>Try the App
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-6" data-aos="fade-left">
+      <div class="row g-3">
+        {% set highlights = [
+          ("bi-mortarboard-fill","Final Year Project","Perfect for BE, BTech, MCA, MSc CS students","#22c55e"),
+          ("bi-cpu-fill","Deep Learning","CNN, Random Forest, Linear Regression","#f59e0b"),
+          ("bi-globe","REST API","Fully exposed API for integration","#8b5cf6"),
+          ("bi-phone","PWA","Responsive on all screen sizes","#06b6d4"),
+        ] %}
+        {% for icon, title, desc, color in highlights %}
+        <div class="col-6">
+          <div class="highlight-card h-100" style="--hc-color:{{ color }}">
+            <i class="bi {{ icon }} highlight-icon" style="color:{{ color }}"></i>
+            <div class="highlight-title">{{ title }}</div>
+            <div class="highlight-desc text-muted small">{{ desc }}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Objectives -->
+  <div class="row mb-5">
+    <div class="col-12 text-center mb-4" data-aos="fade-up">
+      <span class="section-badge">Objectives</span>
+      <h2 class="section-title">Project Goals</h2>
+    </div>
+    {% set objectives = [
+      ("Predict crop yield accurately using environmental parameters and ML regression.","bi-graph-up-arrow","#22c55e"),
+      ("Detect plant diseases from leaf images using CNN computer vision.","bi-bug-fill","#f59e0b"),
+      ("Recommend optimal NPK fertilizer ratios for given crops and soil conditions.","bi-droplet-fill","#8b5cf6"),
+      ("Forecast annual rainfall using historical time-series regression.","bi-cloud-rain-fill","#06b6d4"),
+      ("Expose all features via a REST API for integration with IoT and mobile apps.","bi-code-slash","#ef4444"),
+      ("Demonstrate a full-stack ML web app with professional UI and documentation.","bi-laptop","#10b981"),
+    ] %}
+    {% for text, icon, color in objectives %}
+    <div class="col-md-6 col-lg-4 mb-3" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 60 }}">
+      <div class="objective-card h-100">
+        <i class="bi {{ icon }} objective-icon" style="color:{{ color }}"></i>
+        <p class="mb-0 text-muted">{{ text }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Tech Stack -->
+  <div class="row mb-5">
+    <div class="col-12 text-center mb-4" data-aos="fade-up">
+      <span class="section-badge">Technology</span>
+      <h2 class="section-title">Technology Stack</h2>
+    </div>
+    <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+      <div class="tech-table-wrap">
+        <table class="table ag-table">
+          <thead>
+            <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Backend</td><td>Python, Flask, Flask-CORS</td><td>Web framework, routing, API</td></tr>
+            <tr><td>ML / Regression</td><td>scikit-learn, joblib</td><td>Random Forest, Linear Regression</td></tr>
+            <tr><td>Deep Learning</td><td>TensorFlow, Keras</td><td>CNN for disease detection</td></tr>
+            <tr><td>Data Processing</td><td>NumPy, Pandas</td><td>Feature engineering, data wrangling</td></tr>
+            <tr><td>Visualisation</td><td>Matplotlib, Seaborn</td><td>EDA charts in notebooks</td></tr>
+            <tr><td>Image Processing</td><td>Pillow</td><td>Leaf image pre-processing</td></tr>
+            <tr><td>Frontend</td><td>Bootstrap 5, AOS, Chart.js</td><td>UI, animations, charts</td></tr>
+            <tr><td>Templating</td><td>Jinja2 (via Flask)</td><td>Dynamic HTML pages</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Reference -->
+  <div class="row mb-5">
+    <div class="col-12 text-center mb-4" data-aos="fade-up">
+      <span class="section-badge">REST API</span>
+      <h2 class="section-title">API Endpoints</h2>
+    </div>
+    {% set endpoints = [
+      ("POST","/api/predict-yield","Predict crop yield. Body: crop, rainfall_mm, pesticides_tonnes, avg_temp_c","#22c55e"),
+      ("POST","/api/predict-disease","Diagnose leaf disease. Form-data: image (file)","#f59e0b"),
+      ("POST","/api/recommend-fertilizer","Get NPK recommendation. Body: crop, soil_type, growth_stage, rainfall_mm","#8b5cf6"),
+      ("POST","/api/predict-weather","Forecast rainfall. Body: year","#06b6d4"),
+    ] %}
+    {% for method, path, desc, color in endpoints %}
+    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
+      <div class="api-card h-100">
+        <div class="d-flex align-items-start gap-3">
+          <span class="http-badge" style="background:{{ color }}20;color:{{ color }}">{{ method }}</span>
+          <div>
+            <code class="api-path">{{ path }}</code>
+            <p class="mb-0 text-muted small mt-1">{{ desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Team -->
+  <div class="row">
+    <div class="col-12 text-center mb-4" data-aos="fade-up">
+      <span class="section-badge">Project Team</span>
+      <h2 class="section-title">Built By</h2>
+    </div>
+    <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="team-card mx-auto" style="max-width:400px">
+        <div class="team-avatar"><i class="bi bi-person-circle"></i></div>
+        <h5 class="mt-3 mb-1">Final Year Project</h5>
+        <p class="text-muted small">AI &amp; Machine Learning • Agricultural Technology</p>
+        <div class="d-flex justify-content-center flex-wrap gap-2 mt-3">
+          <span class="badge footer-badge">BE / BTech</span>
+          <span class="badge footer-badge">MCA</span>
+          <span class="badge footer-badge">MSc CS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

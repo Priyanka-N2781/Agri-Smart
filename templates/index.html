@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+{% block title %}AgriSmart – AI-Powered Agricultural Advisory System{% endblock %}
+
+{% block content %}
+
+<!-- ── Hero ── -->
+<section class="hero-section">
+  <div class="hero-particles" id="particles"></div>
+  <div class="container hero-content">
+    <div class="row align-items-center min-vh-100 py-5">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+        <span class="badge hero-badge mb-3">
+          <i class="bi bi-stars me-1"></i>AI-Powered Agriculture
+        </span>
+        <h1 class="hero-title">
+          Smart Farming<br/>Starts with <span class="text-gradient">Data</span>
+        </h1>
+        <p class="hero-subtitle">
+          AgriSmart combines machine learning, computer vision, and real-time
+          analytics to give farmers, researchers, and students actionable,
+          AI-backed agricultural insights — all in one platform.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('main.yield_prediction') }}" class="btn btn-ag-primary btn-lg px-5">
+            <i class="bi bi-play-circle me-2"></i>Get Started
+          </a>
+          <a href="{{ url_for('main.about') }}" class="btn btn-ag-outline btn-lg px-5">
+            <i class="bi bi-info-circle me-2"></i>Learn More
+          </a>
+        </div>
+        <div class="hero-stats mt-5 d-flex flex-wrap gap-4">
+          <div class="stat-item">
+            <span class="stat-num" data-target="33">0</span>
+            <span class="stat-label">Disease Classes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="4">0</span>
+            <span class="stat-label">AI Modules</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="96">0</span><span class="stat-num-suffix">%</span>
+            <span class="stat-label">Model Accuracy</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-flex justify-content-center" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+        <div class="hero-illustration">
+          <div class="hero-card-float card-float-1">
+            <i class="bi bi-graph-up-arrow text-success fs-4"></i>
+            <span>Yield +18%</span>
+          </div>
+          <div class="hero-card-float card-float-2">
+            <i class="bi bi-shield-check text-warning fs-4"></i>
+            <span>Disease Detected</span>
+          </div>
+          <div class="hero-card-float card-float-3">
+            <i class="bi bi-cloud-rain text-info fs-4"></i>
+            <span>Rain Forecast</span>
+          </div>
+          <div class="hero-globe">
+            <i class="bi bi-tree-fill"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,64 C360,120 1080,0 1440,80 L1440,120 L0,120 Z" fill="var(--bg-dark)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── Feature Cards ── -->
+<section class="section-features" id="features">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Core Modules</span>
+      <h2 class="section-title">Four Pillars of Precision Agriculture</h2>
+      <p class="section-sub">Each module is powered by a dedicated ML model, accessible via web UI or REST API.</p>
+    </div>
+    <div class="row g-4">
+
+      <!-- Yield -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card h-100">
+          <div class="feature-icon-wrap" style="--icon-color:#22c55e">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+          <h3 class="feature-title">Crop Yield Prediction</h3>
+          <p class="feature-desc">
+            Random Forest Regressor trained on global datasets. Input rainfall,
+            pesticide usage, and temperature to receive an instant yield estimate.
+          </p>
+          <ul class="feature-tags">
+            <li>Random Forest</li><li>Regression</li><li>Multi-Crop</li>
+          </ul>
+          <a href="{{ url_for('main.yield_prediction') }}" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Disease -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="80">
+        <div class="feature-card h-100" style="--card-accent:#f59e0b">
+          <div class="feature-icon-wrap" style="--icon-color:#f59e0b">
+            <i class="bi bi-bug-fill"></i>
+          </div>
+          <h3 class="feature-title">Plant Disease Detection</h3>
+          <p class="feature-desc">
+            CNN built with Keras &amp; TensorFlow classifies leaf images into
+            33 disease categories and returns tailored treatment recommendations.
+          </p>
+          <ul class="feature-tags">
+            <li>CNN</li><li>Computer Vision</li><li>33 Classes</li>
+          </ul>
+          <a href="{{ url_for('main.disease_prediction') }}" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Fertilizer -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="160">
+        <div class="feature-card h-100" style="--card-accent:#8b5cf6">
+          <div class="feature-icon-wrap" style="--icon-color:#8b5cf6">
+            <i class="bi bi-droplet-fill"></i>
+          </div>
+          <h3 class="feature-title">Fertilizer Recommendation</h3>
+          <p class="feature-desc">
+            Hybrid expert system + ML model suggests the optimal NPK ratio for
+            your crop, soil type, and growth stage to maximise productivity.
+          </p>
+          <ul class="feature-tags">
+            <li>Expert System</li><li>NPK</li><li>Soil Analysis</li>
+          </ul>
+          <a href="{{ url_for('main.fertilizer_recommendation') }}" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Weather -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="240">
+        <div class="feature-card h-100" style="--card-accent:#06b6d4">
+          <div class="feature-icon-wrap" style="--icon-color:#06b6d4">
+            <i class="bi bi-cloud-rain-fill"></i>
+          </div>
+          <h3 class="feature-title">Weather &amp; Rainfall Forecast</h3>
+          <p class="feature-desc">
+            Linear Regression trained on historical records predicts annual
+            rainfall and generates an irrigation &amp; planting advisory.
+          </p>
+          <ul class="feature-tags">
+            <li>Linear Regression</li><li>Time-Series</li><li>Advisory</li>
+          </ul>
+          <a href="{{ url_for('main.weather_prediction') }}" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works ── -->
+<section class="section-how py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Workflow</span>
+      <h2 class="section-title">How AgriSmart Works</h2>
+    </div>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="steps-list">
+          {% set steps = [
+            ("1","Input Data","Enter your field parameters — crop type, soil info, weather data, or upload a leaf photo.","bi-input-cursor-text","#22c55e"),
+            ("2","AI Processing","Our trained ML models analyse the data using Random Forest, CNN, or Linear Regression.","bi-cpu-fill","#f59e0b"),
+            ("3","Smart Results","Receive instant predictions, disease diagnoses, NPK recommendations, or rainfall forecasts.","bi-bar-chart-fill","#8b5cf6"),
+            ("4","Take Action","Follow the tailored advisory to optimise yield, prevent disease, and plan irrigation.","bi-check-circle-fill","#06b6d4"),
+          ] %}
+          {% for num, title, desc, icon, color in steps %}
+          <div class="step-item" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 80 }}">
+            <div class="step-icon" style="background:{{ color }}20;color:{{ color }}">
+              <i class="bi {{ icon }}"></i>
+            </div>
+            <div>
+              <h5 class="step-title mb-1">{{ num }}. {{ title }}</h5>
+              <p class="step-desc mb-0">{{ desc }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+        <div class="api-preview-box">
+          <div class="api-preview-header">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="ms-3 text-muted small">POST /api/predict-yield</span>
+          </div>
+          <pre class="api-preview-code"><span class="json-key">{</span>
+  <span class="json-key">"crop"</span>: <span class="json-str">"Wheat"</span>,
+  <span class="json-key">"rainfall_mm"</span>: <span class="json-num">820</span>,
+  <span class="json-key">"pesticides_tonnes"</span>: <span class="json-num">45</span>,
+  <span class="json-key">"avg_temp_c"</span>: <span class="json-num">23.5</span>
+<span class="json-key">}</span>
+
+<span class="json-comment">// Response</span>
+<span class="json-key">{</span>
+  <span class="json-key">"success"</span>: <span class="json-bool">true</span>,
+  <span class="json-key">"data"</span>: <span class="json-key">{</span>
+    <span class="json-key">"yield_tonnes_per_ha"</span>: <span class="json-num">3.82</span>,
+    <span class="json-key">"low"</span>: <span class="json-num">3.36</span>,
+    <span class="json-key">"high"</span>: <span class="json-num">4.28</span>,
+    <span class="json-key">"model"</span>: <span class="json-str">"random_forest"</span>
+  <span class="json-key">}</span>
+<span class="json-key">}</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Tech Stack ── -->
+<section class="section-tech py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Under the Hood</span>
+      <h2 class="section-title">Built with Industry-Standard Tools</h2>
+    </div>
+    <div class="row g-3 justify-content-center">
+      {% set techs = [
+        ("bi-filetype-py","Python","Backend &amp; ML","#3b82f6"),
+        ("bi-lightning-charge-fill","Flask","Web Framework","#e5e7eb"),
+        ("bi-tree","scikit-learn","ML Models","#f97316"),
+        ("bi-diagram-3-fill","TensorFlow","Deep Learning","#ef4444"),
+        ("bi-image","Keras","CNN API","#d946ef"),
+        ("bi-grid-3x3","NumPy","Numerical Ops","#22c55e"),
+        ("bi-table","Pandas","Data Analysis","#0ea5e9"),
+        ("bi-bootstrap-fill","Bootstrap 5","UI Framework","#7c3aed"),
+      ] %}
+      {% for icon, name, desc, color in techs %}
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="{{ loop.index0 * 40 }}">
+        <div class="tech-card text-center h-100">
+          <i class="bi {{ icon }} tech-icon" style="color:{{ color }}"></i>
+          <div class="tech-name">{{ name }}</div>
+          <div class="tech-desc">{{ desc }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="section-cta py-5" data-aos="fade-up">
+  <div class="container">
+    <div class="cta-box text-center">
+      <h2 class="cta-title">Ready to Predict Your Harvest?</h2>
+      <p class="cta-sub">Choose a module below and get an AI-backed result in seconds.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+        <a href="{{ url_for('main.yield_prediction') }}" class="btn btn-ag-primary btn-lg px-5">
+          <i class="bi bi-graph-up-arrow me-2"></i>Yield Prediction
+        </a>
+        <a href="{{ url_for('main.disease_prediction') }}" class="btn btn-ag-outline btn-lg px-5">
+          <i class="bi bi-bug me-2"></i>Disease Detection
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Animated counters
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".stat-num[data-target]");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.target;
+      let cur = 0;
+      const step = Math.ceil(target / 50);
+      const timer = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = cur;
+        if (cur >= target) clearInterval(timer);
+      }, 30);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+});
+</script>
+{% endblock %}

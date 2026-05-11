@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Plant Disease Detection – AgriSmart{% endblock %}
+{% block content %}
+<div class="page-header" style="--page-color:#f59e0b">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-aos="fade-right">
+        <span class="section-badge">Module 2</span>
+        <h1 class="page-title"><i class="bi bi-bug-fill me-3"></i>Plant Disease Detection</h1>
+        <p class="page-sub">Upload a clear photo of a plant leaf. Our CNN model ({{ total_classes }} disease classes) will diagnose it and recommend a treatment plan.</p>
+      </div>
+      <div class="col-lg-4 d-none d-lg-flex justify-content-end" data-aos="fade-left">
+        <div class="page-header-icon" style="color:#f59e0b"><i class="bi bi-bug-fill"></i></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="row g-5 justify-content-center">
+    <div class="col-lg-5" data-aos="fade-right">
+      <div class="module-card">
+        <h4 class="module-card-title"><i class="bi bi-upload me-2"></i>Upload Leaf Image</h4>
+        <form method="POST" action="{{ url_for('main.disease_prediction') }}"
+              enctype="multipart/form-data" id="diseaseForm">
+          <div class="mb-4">
+            <div class="upload-zone" id="uploadZone" onclick="document.getElementById('leaf_image').click()">
+              <input type="file" id="leaf_image" name="leaf_image" accept="image/*"
+                     class="d-none" onchange="previewImage(this)" required/>
+              <div class="upload-icon"><i class="bi bi-cloud-upload-fill"></i></div>
+              <div class="upload-text">Click or drag &amp; drop a leaf image</div>
+              <div class="upload-hint text-muted small">PNG, JPG, JPEG, WEBP – max 16 MB</div>
+              <img id="imagePreview" src="#" alt="Preview" class="upload-preview d-none mt-3"/>
+            </div>
+          </div>
+          {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+          <button type="submit" class="btn btn-ag-primary w-100 btn-lg" style="--btn-color:#f59e0b">
+            <i class="bi bi-cpu me-2"></i>Diagnose Disease
+          </button>
+        </form>
+      </div>
+      <div class="info-panel mt-4">
+        <h6><i class="bi bi-info-circle me-2"></i>Supported Crops</h6>
+        <p class="small text-muted mb-2">The CNN model recognises diseases in:</p>
+        <div class="d-flex flex-wrap gap-2">
+          {% for crop in ["Apple","Cherry","Corn","Grape","Orange","Peach","Pepper","Potato","Raspberry","Soybean","Squash","Strawberry","Tomato"] %}
+            <span class="badge crop-badge">{{ crop }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7" data-aos="fade-left">
+      {% if result %}
+      <div class="result-card">
+        <div class="result-header" style="--res-color:#f59e0b">
+          <i class="bi bi-clipboard2-pulse-fill me-2"></i>Diagnosis Report
+        </div>
+        <div class="result-body">
+          <div class="disease-badge-wrap text-center my-4">
+            <div class="disease-name-display">{{ result.disease }}</div>
+            <div class="confidence-bar mt-3">
+              <div class="conf-label d-flex justify-content-between mb-1">
+                <span class="small text-muted">Confidence</span>
+                <strong>{{ result.confidence }}%</strong>
+              </div>
+              <div class="progress ag-progress" style="height:12px">
+                <div class="progress-bar" role="progressbar"
+                     style="width:{{ result.confidence }}%;background:{% if result.confidence > 85 %}#22c55e{% elif result.confidence > 65 %}#f59e0b{% else %}#ef4444{% endif %}"
+                     aria-valuenow="{{ result.confidence }}" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="treatment-box mt-4">
+            <h5 class="treatment-title"><i class="bi bi-capsule-pill me-2"></i>Recommended Treatment</h5>
+            <p class="treatment-text">{{ result.treatment }}</p>
+          </div>
+          {% if result.disease.endswith('Healthy') %}
+          <div class="alert alert-success mt-3">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <strong>Great news!</strong> The plant appears healthy. Continue regular monitoring.
+          </div>
+          {% else %}
+          <div class="alert alert-warning mt-3">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong>Action required.</strong> Follow the treatment recommendations above promptly.
+          </div>
+          {% endif %}
+          <div class="text-center mt-3">
+            <span class="badge bg-secondary">Model: {{ result.model }}</span>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="placeholder-card text-center py-5">
+        <i class="bi bi-bug placeholder-icon" style="color:#f59e0b"></i>
+        <h5 class="mt-3">Upload a leaf image to diagnose</h5>
+        <p class="text-muted">Supports {{ total_classes }} disease categories across 13 crop types.</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+function previewImage(input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const preview = document.getElementById("imagePreview");
+    preview.src = e.target.result;
+    preview.classList.remove("d-none");
+    document.querySelector(".upload-icon").classList.add("d-none");
+    document.querySelector(".upload-text").classList.add("d-none");
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+const zone = document.getElementById("uploadZone");
+zone.addEventListener("dragover", e => { e.preventDefault(); zone.classList.add("drag-over"); });
+zone.addEventListener("dragleave", () => zone.classList.remove("drag-over"));
+zone.addEventListener("drop", e => {
+  e.preventDefault(); zone.classList.remove("drag-over");
+  const dt = e.dataTransfer;
+  if (dt.files.length) {
+    document.getElementById("leaf_image").files = dt.files;
+    previewImage(document.getElementById("leaf_image"));
+  }
+});
+</script>
+{% endblock %}

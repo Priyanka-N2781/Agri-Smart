@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Fertilizer Recommendation</h2>
+
+<form method="post" class="card p-4 shadow-sm">
+  <div class="row g-3">
+    <div class="col-md-4">
+      <label class="form-label">Crop Type</label>
+      <select name="crop_type" class="form-select" required>
+        <option value="wheat">Wheat</option>
+        <option value="rice">Rice</option>
+        <option value="maize">Maize</option>
+        <option value="tomato">Tomato</option>
+        <option value="potato">Potato</option>
+        <option value="pepper">Pepper</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Soil Type</label>
+      <select name="soil_type" class="form-select" required>
+        <option value="sandy">Sandy</option>
+        <option value="loamy">Loamy</option>
+        <option value="clay">Clay</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Growth Stage</label>
+      <select name="growth_stage" class="form-select" required>
+        <option value="seedling">Seedling</option>
+        <option value="vegetative">Vegetative</option>
+        <option value="flowering">Flowering</option>
+        <option value="fruiting">Fruiting</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">Rainfall (mm)</label>
+      <input class="form-control" type="number" name="rainfall" step="0.1" required>
+    </div>
+  </div>
+  <button class="btn btn-success mt-3" type="submit">Recommend Fertilizer</button>
+</form>
+
+{% if prediction %}
+  <div class="mt-4 card p-4 border-success">
+    <h4>Recommendation</h4>
+    <pre class="mb-0">{{ prediction }}</pre>
+  </div>
+{% endif %}
+{% endblock %}
+

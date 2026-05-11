@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-4 mb-4 bg-light rounded-4">
+  <h1 class="display-6">AI-Powered Crop Yield Prediction & Agricultural Advisory</h1>
+  <p class="lead">Use AgriSmart modules to get instant, data-backed insights.</p>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Crop Yield Prediction</h5>
+        <p class="card-text">Predict yield using rainfall, pesticide usage, and average temperature.</p>
+        <a class="btn btn-success" href="/yield-prediction">Open Module</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Plant Disease Detection</h5>
+        <p class="card-text">Upload a leaf photo and get diagnosis + recommendation.</p>
+        <a class="btn btn-success" href="/disease-prediction">Open Module</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Fertilizer Recommendation</h5>
+        <p class="card-text">Get NPK suggestions based on crop, soil, growth stage and rainfall.</p>
+        <a class="btn btn-success" href="/fertilizer-recommendation">Open Module</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Weather Pattern Analysis</h5>
+        <p class="card-text">Predict rainfall for a year and get advisory guidance.</p>
+        <a class="btn btn-success" href="/weather-prediction">Open Module</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-info mt-4" role="alert">
+  This local build uses demo models (auto-generated on first run). Replace model files later for production-grade accuracy.
+</div>
+{% endblock %}
+

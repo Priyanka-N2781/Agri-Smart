@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Virtual environment
+venv/
+.venv/
+
+# Flask instance folder
+instance/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploads / user data
+uploads/
+
+# IDE
+.vscode/
+.idea/
+
+# Build / dist
+build/
+dist/
+*.egg
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Static generated artifacts (optional)
+# staticfiles/
+

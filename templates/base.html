@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="AgriSmart – AI-powered crop yield prediction, plant disease detection, fertilizer recommendation, and weather analysis platform."/>
+  <title>{% block title %}AgriSmart – AI Agricultural Advisory{% endblock %}</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}"/>
+  <meta name="theme-color" content="#0f4c2a"/>
+
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar navbar-expand-lg navbar-dark ag-navbar fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('main.index') }}">
+      <span class="brand-icon"><i class="bi bi-tree-fill"></i></span>
+      <span class="brand-text">Agri<span class="brand-accent">Smart</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navMain" aria-controls="navMain"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'main.index' %}active{% endif %}"
+             href="{{ url_for('main.index') }}">
+            <i class="bi bi-house-door me-1"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'main.yield_prediction' %}active{% endif %}"
+             href="{{ url_for('main.yield_prediction') }}">
+            <i class="bi bi-graph-up-arrow me-1"></i>Yield
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'main.disease_prediction' %}active{% endif %}"
+             href="{{ url_for('main.disease_prediction') }}">
+            <i class="bi bi-bug me-1"></i>Disease
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'main.fertilizer_recommendation' %}active{% endif %}"
+             href="{{ url_for('main.fertilizer_recommendation') }}">
+            <i class="bi bi-droplet-fill me-1"></i>Fertilizer
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.endpoint == 'main.weather_prediction' %}active{% endif %}"
+             href="{{ url_for('main.weather_prediction') }}">
+            <i class="bi bi-cloud-rain me-1"></i>Weather
+          </a>
+        </li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-ag-primary btn-sm px-4"
+             href="{{ url_for('main.about') }}">
+            <i class="bi bi-info-circle me-1"></i>About
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Main Content ── -->
+<main class="ag-main">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="container pt-4">
+        {% for cat, msg in messages %}
+          <div class="alert alert-{{ cat }} alert-dismissible fade show" role="alert">
+            {{ msg }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ── Footer ── -->
+<footer class="ag-footer mt-auto">
+  <div class="container">
+    <div class="row gy-4 py-5">
+      <div class="col-lg-4" data-aos="fade-up">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="brand-icon"><i class="bi bi-tree-fill"></i></span>
+          <span class="brand-text fs-5">Agri<span class="brand-accent">Smart</span></span>
+        </div>
+        <p class="text-muted small">
+          AI-powered precision agriculture platform combining machine learning,
+          deep learning, and real-time data analysis for smarter farming decisions.
+        </p>
+      </div>
+      <div class="col-6 col-lg-2" data-aos="fade-up" data-aos-delay="100">
+        <h6 class="footer-heading">Modules</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="{{ url_for('main.yield_prediction') }}">Yield Prediction</a></li>
+          <li><a href="{{ url_for('main.disease_prediction') }}">Disease Detection</a></li>
+          <li><a href="{{ url_for('main.fertilizer_recommendation') }}">Fertilizer Guide</a></li>
+          <li><a href="{{ url_for('main.weather_prediction') }}">Weather Forecast</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2" data-aos="fade-up" data-aos-delay="150">
+        <h6 class="footer-heading">API</h6>
+        <ul class="list-unstyled footer-links">
+          <li><code class="small">/api/predict-yield</code></li>
+          <li><code class="small">/api/predict-disease</code></li>
+          <li><code class="small">/api/recommend-fertilizer</code></li>
+          <li><code class="small">/api/predict-weather</code></li>
+        </ul>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <h6 class="footer-heading">Tech Stack</h6>
+        <div class="d-flex flex-wrap gap-2">
+          {% for tech in ["Python","Flask","scikit-learn","TensorFlow","Keras","NumPy","Pandas","Bootstrap"] %}
+            <span class="badge footer-badge">{{ tech }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <hr class="footer-hr"/>
+    <div class="row py-3 align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <small class="text-muted">© 2024 AgriSmart. Final Year Project — AI & Agricultural Technology.</small>
+      </div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+        <small class="text-muted">Built with <i class="bi bi-heart-fill text-danger"></i> using Python &amp; Flask</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Plant Disease Detection</h2>
+
+<form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+  <div class="mb-3">
+    <label class="form-label">Upload leaf image</label>
+    <input class="form-control" type="file" name="leaf_image" accept="image/*" required>
+  </div>
+  <button class="btn btn-success" type="submit">Diagnose</button>
+</form>
+
+{% if error %}
+  <div class="alert alert-danger mt-3">{{ error }}</div>
+{% endif %}
+
+{% if prediction %}
+  <div class="mt-4 card p-4 border-success">
+    <h4>Diagnosis</h4>
+    <pre class="mb-0">{{ prediction }}</pre>
+  </div>
+{% endif %}
+{% endblock %}
+

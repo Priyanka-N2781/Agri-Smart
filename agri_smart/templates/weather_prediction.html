@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Weather Pattern Analysis & Rainfall Prediction</h2>
+
+<form method="post" class="card p-4 shadow-sm">
+  <div class="row g-3">
+    <div class="col-md-4">
+      <label class="form-label">Year</label>
+      <input class="form-control" type="number" name="year" required>
+    </div>
+  </div>
+  <button class="btn btn-success mt-3" type="submit">Predict Rainfall</button>
+</form>
+
+{% if prediction %}
+  <div class="mt-4 card p-4 border-success">
+    <h4>Forecast</h4>
+    <pre class="mb-0">{{ prediction }}</pre>
+  </div>
+{% endif %}
+{% endblock %}
+
