@@ -1,15 +1,7 @@
-# AgriSmart (Local Host) Setup Checklist
-
-- [ ] Create Flask project structure (backend, templates, static).
-- [ ] Implement Flask app with routes + REST API endpoints.
-- [ ] Implement model loader/wrappers with graceful fallback demo models.
-- [ ] Implement HTML templates for all modules.
-- [ ] Add Bootstrap-based UI and simple form flows.
-- [ ] Add configuration + environment setup docs.
-- [ ] Add dependency files (requirements.txt).
-- [ ] Add a smoke test command and run instructions.
-- [ ] Verify `python app.py` starts local host.
-- [x] Smoke test all pages + REST API endpoints.
-- [x] Fix Home/About page text visibility and content per requirements.
-
+- [ ] Verify / implement Home page alignment fix for “96% Model Accuracy” (ensure % and label render on correct line)
+- [ ] Ensure About page graphs/visuals are visible (and remove any hidden/very light text)
+- [ ] Update About page: remove “Final year project”, “PWA”, and related references; keep project goals + modules wording visible
+- [ ] Update About page “Built by” section: show exactly as requested (names + B.TECH Information Technology)
+- [ ] Run smoke test: start Flask app, load / and /about, confirm layout fixes
+- [ ] Commit and push changes
 
