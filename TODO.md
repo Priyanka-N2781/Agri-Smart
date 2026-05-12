@@ -9,6 +9,7 @@
 - [ ] Add dependency files (requirements.txt).
 - [ ] Add a smoke test command and run instructions.
 - [ ] Verify `python app.py` starts local host.
-- [ ] Smoke test all pages + REST API endpoints.
+- [x] Smoke test all pages + REST API endpoints.
+- [x] Fix Home/About page text visibility and content per requirements.
 
 

@@ -1,15 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>About AgriSmart</h2>
-<p class="text-muted">AgriSmart is an AI-powered agricultural advisory system that demonstrates machine learning and deep learning concepts in a real-world domain.</p>
+<p class="text-muted">AgriSmart is an AI-powered agricultural advisory system that helps farmers make data-driven decisions through multiple ML/DL modules.</p>
 
-<ul>
-  <li><b>Yield Prediction</b> — RandomForest-style regression demo</li>
-  <li><b>Disease Detection</b> — CNN classification demo (placeholder)</li>
-  <li><b>Fertilizer Recommendation</b> — Rule-based NPK recommendation demo</li>
-  <li><b>Weather Forecast</b> — Linear regression demo</li>
-</ul>
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Project Goals</h5>
+        <ul class="mb-0">
+          <li>Predict crop yield using environmental inputs.</li>
+          <li>Detect common plant diseases from leaf images.</li>
+          <li>Recommend fertilizer (NPK) based on crop, soil and stage.</li>
+          <li>Forecast rainfall patterns and provide advisory guidance.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<p class="small text-muted">For production-grade results, replace the demo models with your trained models and provide datasets + class mappings.</p>
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">AgriSmart Modules</h5>
+        <ul class="mb-0">
+          <li><b>Crop Yield Prediction</b> — ML regression demo</li>
+          <li><b>Plant Disease Detection</b> — CNN classification demo</li>
+          <li><b>Fertilizer Recommendation</b> — rule-based NPK recommendation demo</li>
+          <li><b>Weather Pattern Analysis</b> — rainfall forecast demo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <h5>Architecture Snapshot</h5>
+  <div class="p-3 bg-light rounded-4">
+    <div class="fw-semibold mb-2">Input → Model(s) → Output → Advisory</div>
+    <ul class="mb-0">
+      <li>Yield: rainfall, pesticide usage, temperature</li>
+      <li>Disease: leaf image</li>
+      <li>Fertilizer: crop type, soil type, growth stage, rainfall</li>
+      <li>Weather: year-based rainfall forecast</li>
+    </ul>
+  </div>
+</div>
+
+<div class="mt-4">
+  <h5>Built By</h5>
+  <div class="fw-bold">PRIYANKA N , PRIYADHARSHINI L , KIRUBAKARAN K</div>
+  <div class="text-muted">B.TECH Information Technology</div>
+</div>
+
+<p class="small text-muted mt-3">Final-year project, PWA and extra coursework references removed to keep the page focused on project modules and goals.</p>
+
 {% endblock %}
 
