@@ -102,10 +102,11 @@ main.ag-main { padding-top: var(--navbar-h); flex: 1; }
 .hero-subtitle { font-size: 1.1rem; color: var(--text-muted); max-width: 520px; line-height: 1.7; }
 
 /* Hero stats */
-.stat-item { display: flex; flex-direction: column; }
+.stat-item { display: flex; flex-direction: column; align-items: center; }
 .stat-num  { font-family:'Outfit',sans-serif; font-size:2.2rem; font-weight:800; color:var(--green-400); line-height:1; }
 .stat-num-suffix { font-size:1.5rem; font-weight:800; color:var(--green-400); }
 .stat-label { font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.8px; margin-top:.2rem; }
+.stat-num-wrap { display:flex; align-items:baseline; gap:.25rem; }
 
 /* Hero illustration */
 .hero-illustration {
@@ -416,6 +417,9 @@ main.ag-main { padding-top: var(--navbar-h); flex: 1; }
 .highlight-card:hover { transform:translateY(-4px); border-color:var(--hc-color,var(--green-500)); }
 .highlight-icon { font-size:2rem; margin-bottom:.7rem; display:block; }
 .highlight-title { font-weight:700; margin-bottom:.3rem; }
+
+/* Make highlight descriptions more visible (avoid very-light text) */
+.highlight-desc { color:var(--text); }
 
 .objective-card {
   background:var(--bg-card); border:1px solid var(--border);
