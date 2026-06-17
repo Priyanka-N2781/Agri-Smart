@@ -113,7 +113,6 @@ RAG Pipeline
 
 ### AI Integration
 - Groq API
-- Large Language Models (LLMs)
 - Retrieval-Augmented Generation (RAG)
 
 ---
