@@ -1,7 +1,7 @@
 # 🌱 AgriSmart – AI-Powered Smart Agriculture Platform
 
 ## 📖 Overview 
-
+ 
 AgriSmart is an AI-powered smart agriculture platform that helps farmers make data-driven decisions using Machine Learning, Artificial Intelligence, and real-time agricultural insights. The system assists in crop selection, disease detection, yield prediction, fertilizer recommendations, and intelligent farming guidance to improve productivity and sustainability.
 
 ---
