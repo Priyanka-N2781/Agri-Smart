@@ -15,7 +15,7 @@ Farmers often face challenges such as:
 - Improper fertilizer usage
 - Low crop productivity
 - Lack of expert agricultural guidance
-
+ 
 AgriSmart addresses these challenges by providing AI-driven recommendations and predictive analytics to support smarter farming decisions.
 
 ---
