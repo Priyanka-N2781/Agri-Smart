@@ -99,7 +99,7 @@ RAG Pipeline
 - REST APIs
 
 ### Database
-- MongoDB / PostgreSQL
+- PostgreSQL
 
 ### AI & Machine Learning
 - Scikit-learn
