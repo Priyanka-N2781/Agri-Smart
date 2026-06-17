@@ -65,9 +65,7 @@ Frontend Application
     ▼
 Backend API Services
     │
- ┌──┼─────────────────────┐
- │  │                     │
- ▼  ▼                     ▼
+    ▼                
 Crop Recommendation
 Disease Detection
 Yield Prediction
