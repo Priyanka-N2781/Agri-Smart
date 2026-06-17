@@ -106,8 +106,6 @@ RAG Pipeline
 ### AI & Machine Learning
 - Scikit-learn
 - TensorFlow
-- Keras
-- OpenCV
 - Pandas
 - NumPy
 
