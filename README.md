@@ -97,7 +97,7 @@ RAG Pipeline
 
 ### Backend
 - Python
-- Flask / FastAPI
+- FastAPI
 - REST APIs
 
 ### Database
