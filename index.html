@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="AgriSmart – AI-powered crop yield prediction, plant disease detection, fertilizer recommendation, and weather analysis platform."/>
+  <title>AgriSmart – AI-Powered Agricultural Advisory System</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/css/style.css"/>
+
+  <!-- PWA manifest removed -->
+
+  
+</head>
+<body>
+
+<!-- ── Navbar ── -->
+<nav class="navbar navbar-expand-lg navbar-dark ag-navbar fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <span class="brand-icon"><i class="bi bi-tree-fill"></i></span>
+      <span class="brand-text">Agri<span class="brand-accent">Smart</span></span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navMain" aria-controls="navMain"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item">
+          <a class="nav-link active"
+             href="index.html">
+            <i class="bi bi-house-door me-1"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "
+             href="yield-prediction.html">
+            <i class="bi bi-graph-up-arrow me-1"></i>Yield
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "
+             href="disease-prediction.html">
+            <i class="bi bi-bug me-1"></i>Disease
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "
+             href="fertilizer-recommendation.html">
+            <i class="bi bi-droplet-fill me-1"></i>Fertilizer
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "
+             href="weather-prediction.html">
+            <i class="bi bi-cloud-rain me-1"></i>Weather
+          </a>
+        </li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn btn-ag-primary btn-sm px-4"
+             href="about.html">
+            <i class="bi bi-info-circle me-1"></i>About
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Main Content ── -->
+<main class="ag-main">
+  
+    
+  
+
+  
+
+<!-- ── Hero ── -->
+<section class="hero-section">
+  <div class="hero-particles" id="particles"></div>
+  <div class="container hero-content">
+    <div class="row align-items-center min-vh-100 py-5">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-duration="900">
+        <span class="badge hero-badge mb-3">
+          <i class="bi bi-stars me-1"></i>AI-Powered Agriculture
+        </span>
+        <h1 class="hero-title">
+          Smart Farming<br/>Starts with <span class="text-gradient">Data</span>
+        </h1>
+        <p class="hero-subtitle">
+          AgriSmart combines machine learning, computer vision, and real-time
+          analytics to give farmers, researchers, and students actionable,
+          AI-backed agricultural insights — all in one platform.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="yield-prediction.html" class="btn btn-ag-primary btn-lg px-5">
+            <i class="bi bi-play-circle me-2"></i>Get Started
+          </a>
+          <a href="about.html" class="btn btn-ag-outline btn-lg px-5">
+            <i class="bi bi-info-circle me-2"></i>Learn More
+          </a>
+        </div>
+        <div class="hero-stats mt-5 d-flex flex-wrap gap-4">
+          <div class="stat-item">
+            <span class="stat-num" data-target="33">0</span>
+            <span class="stat-label">Disease Classes</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" data-target="4">0</span>
+            <span class="stat-label">AI Modules</span>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num-wrap">
+              <span class="stat-num" data-target="96">0</span>
+              <span class="stat-num-suffix">%</span>
+            </div>
+            <span class="stat-label">Model Accuracy</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-flex justify-content-center" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+        <div class="hero-illustration">
+          <div class="hero-card-float card-float-1">
+            <i class="bi bi-graph-up-arrow text-success fs-4"></i>
+            <span>Yield +18%</span>
+          </div>
+          <div class="hero-card-float card-float-2">
+            <i class="bi bi-shield-check text-warning fs-4"></i>
+            <span>Disease Detected</span>
+          </div>
+          <div class="hero-card-float card-float-3">
+            <i class="bi bi-cloud-rain text-info fs-4"></i>
+            <span>Rain Forecast</span>
+          </div>
+          <div class="hero-globe">
+            <i class="bi bi-tree-fill"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,64 C360,120 1080,0 1440,80 L1440,120 L0,120 Z" fill="var(--bg-dark)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ── Feature Cards ── -->
+<section class="section-features" id="features">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Core Modules</span>
+      <h2 class="section-title">Four Pillars of Precision Agriculture</h2>
+      <p class="section-sub">Each module is powered by a dedicated ML model, accessible via web UI or REST API.</p>
+    </div>
+    <div class="row g-4">
+
+      <!-- Yield -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card h-100">
+          <div class="feature-icon-wrap" style="--icon-color:#22c55e">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+          <h3 class="feature-title">Crop Yield Prediction</h3>
+          <p class="feature-desc">
+            Random Forest Regressor trained on global datasets. Input rainfall,
+            pesticide usage, and temperature to receive an instant yield estimate.
+          </p>
+          <ul class="feature-tags">
+            <li>Random Forest</li><li>Regression</li><li>Multi-Crop</li>
+          </ul>
+          <a href="yield-prediction.html" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Disease -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="80">
+        <div class="feature-card h-100" style="--card-accent:#f59e0b">
+          <div class="feature-icon-wrap" style="--icon-color:#f59e0b">
+            <i class="bi bi-bug-fill"></i>
+          </div>
+          <h3 class="feature-title">Plant Disease Detection</h3>
+          <p class="feature-desc">
+            CNN built with Keras &amp; TensorFlow classifies leaf images into
+            33 disease categories and returns tailored treatment recommendations.
+          </p>
+          <ul class="feature-tags">
+            <li>CNN</li><li>Computer Vision</li><li>33 Classes</li>
+          </ul>
+          <a href="disease-prediction.html" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Fertilizer -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="160">
+        <div class="feature-card h-100" style="--card-accent:#8b5cf6">
+          <div class="feature-icon-wrap" style="--icon-color:#8b5cf6">
+            <i class="bi bi-droplet-fill"></i>
+          </div>
+          <h3 class="feature-title">Fertilizer Recommendation</h3>
+          <p class="feature-desc">
+            Hybrid expert system + ML model suggests the optimal NPK ratio for
+            your crop, soil type, and growth stage to maximise productivity.
+          </p>
+          <ul class="feature-tags">
+            <li>Expert System</li><li>NPK</li><li>Soil Analysis</li>
+          </ul>
+          <a href="fertilizer-recommendation.html" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Weather -->
+      <div class="col-md-6 col-xl-3" data-aos="fade-up" data-aos-delay="240">
+        <div class="feature-card h-100" style="--card-accent:#06b6d4">
+          <div class="feature-icon-wrap" style="--icon-color:#06b6d4">
+            <i class="bi bi-cloud-rain-fill"></i>
+          </div>
+          <h3 class="feature-title">Weather &amp; Rainfall Forecast</h3>
+          <p class="feature-desc">
+            Linear Regression trained on historical records predicts annual
+            rainfall and generates an irrigation &amp; planting advisory.
+          </p>
+          <ul class="feature-tags">
+            <li>Linear Regression</li><li>Time-Series</li><li>Advisory</li>
+          </ul>
+          <a href="weather-prediction.html" class="btn btn-feature mt-auto">
+            Try It <i class="bi bi-arrow-right ms-1"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works ── -->
+<section class="section-how py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Workflow</span>
+      <h2 class="section-title">How AgriSmart Works</h2>
+    </div>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="steps-list">
+          
+          
+          <div class="step-item" data-aos="fade-up" data-aos-delay="0">
+            <div class="step-icon" style="background:#22c55e20;color:#22c55e">
+              <i class="bi bi-input-cursor-text"></i>
+            </div>
+            <div>
+              <h5 class="step-title mb-1">1. Input Data</h5>
+              <p class="step-desc mb-0">Enter your field parameters — crop type, soil info, weather data, or upload a leaf photo.</p>
+            </div>
+          </div>
+          
+          <div class="step-item" data-aos="fade-up" data-aos-delay="80">
+            <div class="step-icon" style="background:#f59e0b20;color:#f59e0b">
+              <i class="bi bi-cpu-fill"></i>
+            </div>
+            <div>
+              <h5 class="step-title mb-1">2. AI Processing</h5>
+              <p class="step-desc mb-0">Our trained ML models analyse the data using Random Forest, CNN, or Linear Regression.</p>
+            </div>
+          </div>
+          
+          <div class="step-item" data-aos="fade-up" data-aos-delay="160">
+            <div class="step-icon" style="background:#8b5cf620;color:#8b5cf6">
+              <i class="bi bi-bar-chart-fill"></i>
+            </div>
+            <div>
+              <h5 class="step-title mb-1">3. Smart Results</h5>
+              <p class="step-desc mb-0">Receive instant predictions, disease diagnoses, NPK recommendations, or rainfall forecasts.</p>
+            </div>
+          </div>
+          
+          <div class="step-item" data-aos="fade-up" data-aos-delay="240">
+            <div class="step-icon" style="background:#06b6d420;color:#06b6d4">
+              <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <div>
+              <h5 class="step-title mb-1">4. Take Action</h5>
+              <p class="step-desc mb-0">Follow the tailored advisory to optimise yield, prevent disease, and plan irrigation.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+        <div class="api-preview-box">
+          <div class="api-preview-header">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="ms-3 text-muted small">POST /api/predict-yield</span>
+          </div>
+          <pre class="api-preview-code"><span class="json-key">{</span>
+  <span class="json-key">"crop"</span>: <span class="json-str">"Wheat"</span>,
+  <span class="json-key">"rainfall_mm"</span>: <span class="json-num">820</span>,
+  <span class="json-key">"pesticides_tonnes"</span>: <span class="json-num">45</span>,
+  <span class="json-key">"avg_temp_c"</span>: <span class="json-num">23.5</span>
+<span class="json-key">}</span>
+
+<span class="json-comment">// Response</span>
+<span class="json-key">{</span>
+  <span class="json-key">"success"</span>: <span class="json-bool">true</span>,
+  <span class="json-key">"data"</span>: <span class="json-key">{</span>
+    <span class="json-key">"yield_tonnes_per_ha"</span>: <span class="json-num">3.82</span>,
+    <span class="json-key">"low"</span>: <span class="json-num">3.36</span>,
+    <span class="json-key">"high"</span>: <span class="json-num">4.28</span>,
+    <span class="json-key">"model"</span>: <span class="json-str">"random_forest"</span>
+  <span class="json-key">}</span>
+<span class="json-key">}</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Tech Stack ── -->
+<section class="section-tech py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="section-badge">Under the Hood</span>
+      <h2 class="section-title">Built with Industry-Standard Tools</h2>
+    </div>
+    <div class="row g-3 justify-content-center">
+      
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="0">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-filetype-py tech-icon" style="color:#3b82f6"></i>
+          <div class="tech-name">Python</div>
+          <div class="tech-desc">Backend &amp;amp; ML</div>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="40">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-lightning-charge-fill tech-icon" style="color:#e5e7eb"></i>
+          <div class="tech-name">Flask</div>
+          <div class="tech-desc">Web Framework</div>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="80">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-tree tech-icon" style="color:#f97316"></i>
+          <div class="tech-name">scikit-learn</div>
+          <div class="tech-desc">ML Models</div>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="120">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-diagram-3-fill tech-icon" style="color:#ef4444"></i>
+          <div class="tech-name">TensorFlow</div>
+          <div class="tech-desc">Deep Learning</div>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="160">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-image tech-icon" style="color:#d946ef"></i>
+          <div class="tech-name">Keras</div>
+          <div class="tech-desc">CNN API</div>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="200">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-grid-3x3 tech-icon" style="color:#22c55e"></i>
+          <div class="tech-name">NumPy</div>
+          <div class="tech-desc">Numerical Ops</div>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="240">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-table tech-icon" style="color:#0ea5e9"></i>
+          <div class="tech-name">Pandas</div>
+          <div class="tech-desc">Data Analysis</div>
+        </div>
+      </div>
+      
+      <div class="col-6 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="280">
+        <div class="tech-card text-center h-100">
+          <i class="bi bi-bootstrap-fill tech-icon" style="color:#7c3aed"></i>
+          <div class="tech-name">Bootstrap 5</div>
+          <div class="tech-desc">UI Framework</div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="section-cta py-5" data-aos="fade-up">
+  <div class="container">
+    <div class="cta-box text-center">
+      <h2 class="cta-title">Ready to Predict Your Harvest?</h2>
+      <p class="cta-sub">Choose a module below and get an AI-backed result in seconds.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+        <a href="yield-prediction.html" class="btn btn-ag-primary btn-lg px-5">
+          <i class="bi bi-graph-up-arrow me-2"></i>Yield Prediction
+        </a>
+        <a href="disease-prediction.html" class="btn btn-ag-outline btn-lg px-5">
+          <i class="bi bi-bug me-2"></i>Disease Detection
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- ── Footer ── -->
+<footer class="ag-footer mt-auto">
+  <div class="container">
+    <div class="row gy-4 py-5">
+      <div class="col-lg-4" data-aos="fade-up">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="brand-icon"><i class="bi bi-tree-fill"></i></span>
+          <span class="brand-text fs-5">Agri<span class="brand-accent">Smart</span></span>
+        </div>
+        <p class="text-muted small">
+          AI-powered precision agriculture platform combining machine learning,
+          deep learning, and real-time data analysis for smarter farming decisions.
+        </p>
+      </div>
+      <div class="col-6 col-lg-2" data-aos="fade-up" data-aos-delay="100">
+        <h6 class="footer-heading">Modules</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="yield-prediction.html">Yield Prediction</a></li>
+          <li><a href="disease-prediction.html">Disease Detection</a></li>
+          <li><a href="fertilizer-recommendation.html">Fertilizer Guide</a></li>
+          <li><a href="weather-prediction.html">Weather Forecast</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-lg-2" data-aos="fade-up" data-aos-delay="150">
+        <h6 class="footer-heading">API</h6>
+        <ul class="list-unstyled footer-links">
+          <li><code class="small">/api/predict-yield</code></li>
+          <li><code class="small">/api/predict-disease</code></li>
+          <li><code class="small">/api/recommend-fertilizer</code></li>
+          <li><code class="small">/api/predict-weather</code></li>
+        </ul>
+      </div>
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <h6 class="footer-heading">Tech Stack</h6>
+        <div class="d-flex flex-wrap gap-2">
+          
+            <span class="badge footer-badge">Python</span>
+          
+            <span class="badge footer-badge">Flask</span>
+          
+            <span class="badge footer-badge">scikit-learn</span>
+          
+            <span class="badge footer-badge">TensorFlow</span>
+          
+            <span class="badge footer-badge">Keras</span>
+          
+            <span class="badge footer-badge">NumPy</span>
+          
+            <span class="badge footer-badge">Pandas</span>
+          
+            <span class="badge footer-badge">Bootstrap</span>
+          
+        </div>
+      </div>
+    </div>
+    <hr class="footer-hr"/>
+    <div class="row py-3 align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+         <small class="text-muted">© 2026 AgriSmart — AI &amp; Agricultural Technology.</small>
+      </div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+         <small class="text-muted">Built using Python &amp; Flask</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="static/js/main.js"></script>
+
+<script>
+// Animated counters
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".stat-num[data-target]");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, target = +el.dataset.target;
+      let cur = 0;
+      const step = Math.ceil(target / 50);
+      const timer = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = cur;
+        if (cur >= target) clearInterval(timer);
+      }, 30);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+});
+</script>
+
+</body>
+</html>
