@@ -69,9 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <div class="result-body">
           ${body}
-          <div class="alert alert-info mb-0">
-            Static website preview is active. Backend ML predictions need Python hosting such as Render.
-          </div>
         </div>
       </div>
     `;
